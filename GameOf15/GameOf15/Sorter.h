@@ -37,12 +37,6 @@ vector<int> sort_array_manually(int index_start, int size, int columns) {
 	}
 	// set last on array as 0
 	to_fill[size - 1] = 0;
-
-	cout << "GENRATED ARRAY: " << endl;
-	for (size_t i = 0; i < to_fill.size(); i++)
-	{
-		cout << "arr " << i << ": " << to_fill[i];
-	}
 	return to_fill;
 }
 

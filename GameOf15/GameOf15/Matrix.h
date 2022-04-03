@@ -1,8 +1,8 @@
 #pragma once
 #include <sstream>
 #include "MatrixComponents.h"
-#define RESET "\033[0m"
-#define GREEN   "\033[32m"      /* Green */
+constexpr auto RESET = "\033[0m";
+constexpr auto GREEN = "\033[32m"      /* Green */;
 
 struct OrtogonalMatrix {
 	OrtogonalHeaders* headers;

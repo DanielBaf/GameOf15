@@ -1,8 +1,8 @@
 #pragma once
 #include <chrono>
 #include <ctime>   
+#include <conio.h>
 #include "Game.h"
-
 
 class GameController
 {
@@ -28,7 +28,7 @@ private:
 	// methods
 	void ask_basic_game(int &, int&, int&);
 	void move_cell_input(int, string);
-	void print_game_result(std::chrono::duration<double>);
+	void print_game_result(std::chrono::duration<double>,bool);
 protected:
 };
 

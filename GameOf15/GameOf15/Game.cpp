@@ -132,20 +132,37 @@ bool Game::is_game_won() {
 	// view in all nodes
 	AsideNode* current = this->boards[current_board]->asides->tail;
 	OrtogonalNode* node_check;
-	// check tail by tail if is ordered from lower to higher
-	while (current != NULL) {
+	// check tail by tail if is ordered, from last wich must be "0", and all wich should be sorted from higher to lower
+		while (current != NULL) {
 		node_check = current->row->tail;
 		while (node_check != NULL) {
 			if (node_check->right != NULL) {
 				if (node_check->value > node_check->right->value) {
-					return false;
+					// check if is higher 'case is higher than 0
+					if (node_check->right != this->boards[current_board]->asides->head->row->head) {
+						return false;
+					}
 				}
 			}
 			node_check = node_check->right;
 		}
 		current = current->next;
 	}
-	return false;
+	return true;
+}
+
+int Game::check_is_won() {
+	if (this->is_game_won()) {
+		forward_board();
+		if (this->current_board >= this->boards.size()) {
+			cout << "Has ganado todos los niveles del juego " << endl;
+			return -1;
+		}
+		else {
+			cout << "Has ganado el nivel " << this->current_board << " cambiando de tablero..." << endl;
+		}
+	}
+	return 0;
 }
 
 /// <summary>

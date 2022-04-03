@@ -1,5 +1,4 @@
 #include "GameController.h"
-#include "conio.h"
 #include "Sorter.h"
 
 GameController::GameController(string nickname) {
@@ -55,6 +54,7 @@ void GameController::start_game() {
 	auto start_time = std::chrono::system_clock::now();
 	int action = -1;
 	string option = "";
+	bool is_game_won = false;
 	cout << CLEAR_CONSOLE;
 	cout << "Bienvendio, " << this->user_nick << " aqui empieza el juego" << endl << "Escribe 'help' para ver los comandos" << endl << endl;
 
@@ -76,6 +76,10 @@ void GameController::start_game() {
 			cin >> cell;
 			cin >> action;
 			move_cell_input(cell, action);
+			// check if won
+			if (this->current_game.check_is_won() == -1) {
+				action = 9;
+			}
 		}
 		else if (option._Equal("restart")) {
 			cout << "NO PROGRAMADO AÚN" << endl;
@@ -92,7 +96,7 @@ void GameController::start_game() {
 	// end of game and time
 	auto end_time = std::chrono::system_clock::now();
 	std::chrono::duration<double> elapsed_seconds = end_time - start_time;
-	print_game_result(elapsed_seconds);
+	print_game_result(elapsed_seconds, is_game_won);
 };
 
 /// <summary>
@@ -116,10 +120,6 @@ void GameController::move_cell_input(int cell, string action) {
 	}
 	else {
 		cout << "OPERACION INVALIDA" << endl;
-	}
-	// check if won
-	if (this->current_game.is_game_won()) {
-		cout << "JUEGO GANADO" << endl;
 	}
 };
 
@@ -199,10 +199,14 @@ void GameController::restore_cin_buffer_game() {
 /// Prints the number of steps, the time and the points
 /// </summary>
 /// <param name="elapsed_seconds"></param>
-void GameController::print_game_result(std::chrono::duration<double> elapsed_seconds) {
+void GameController::print_game_result(std::chrono::duration<double> elapsed_seconds, bool is_game_won) {
+	// calc points
+	cout << CLEAR_CONSOLE;
 	cout << "RESULTADOS: " << endl;
+	cout << "Usuario: " << this->user_nick << endl;
 	cout << "Pasos: " << this->current_game.get_steps() << endl;
 	cout << "Tiempo: " << elapsed_seconds.count() << "s" << endl;
+	cout << "Juego ganado: " << is_game_won << endl;
 	// TODO calc pints and show
 	cout << "... enter para contiunar";
 	_getch();

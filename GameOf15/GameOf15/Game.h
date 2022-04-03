@@ -23,6 +23,7 @@ public:
 	int get_levels();
 	int get_steps();
 	bool is_game_won();
+	int check_is_won();
 private:
 	// atributes
 	int levels, current_board;
