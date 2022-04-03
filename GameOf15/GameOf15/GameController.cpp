@@ -79,6 +79,10 @@ void GameController::start_game() {
 			// check if won
 			if (this->current_game.check_is_won() == -1) {
 				action = 9;
+				is_game_won = true;
+				cout << "Cerrando el juego...";
+				_getch();
+				break;
 			}
 		}
 		else if (option._Equal("restart")) {

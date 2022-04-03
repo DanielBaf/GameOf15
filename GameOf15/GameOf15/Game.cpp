@@ -153,13 +153,14 @@ bool Game::is_game_won() {
 
 int Game::check_is_won() {
 	if (this->is_game_won()) {
-		forward_board();
-		if (this->current_board >= this->boards.size()) {
+		if (this->current_board >= this->boards.size() - 1) {
+			forward_board();
 			cout << "Has ganado todos los niveles del juego " << endl;
 			return -1;
 		}
 		else {
 			cout << "Has ganado el nivel " << this->current_board << " cambiando de tablero..." << endl;
+			forward_board();
 		}
 	}
 	return 0;

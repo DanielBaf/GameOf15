@@ -142,6 +142,8 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameOf15.cpp" />
+    <ClCompile Include="Podium.cpp" />
+    <ClCompile Include="PodiumDataSaver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -149,6 +151,8 @@
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MatrixComponents.h" />
     <ClInclude Include="OrtogonalNodes.h" />
+    <ClInclude Include="Podium.h" />
+    <ClInclude Include="PodiumDataSaver.h" />
     <ClInclude Include="Sorter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
