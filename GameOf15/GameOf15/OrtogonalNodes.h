@@ -21,6 +21,9 @@ struct OrtogonalNode
         this->left = NULL;
         this->right = NULL;
     }
+
+    ~OrtogonalNode() {
+    }
 };
 
 /// <summary>
@@ -33,6 +36,15 @@ struct VerticalList
     VerticalList()
     {
         this->tail = this->head = NULL;
+    }
+
+    ~VerticalList() {
+        OrtogonalNode* current = tail;
+        while (current != NULL) {
+            OrtogonalNode* recover = current->up;
+            current->~OrtogonalNode();
+            current = recover;
+        }
     }
 
     void insert(OrtogonalNode* node)
@@ -118,7 +130,16 @@ struct HorizontalList {
     HorizontalList()
     {
         this->tail = this->head = NULL;
-    }
+    };
+
+    ~HorizontalList() {
+        OrtogonalNode* current = tail;
+        while (current != NULL) {
+            OrtogonalNode* recover = current->right;
+            current->~OrtogonalNode();
+            current = recover;
+        }
+    };
 
     void insert(OrtogonalNode* node)
     {
@@ -142,21 +163,21 @@ struct HorizontalList {
                 insertMiddle(node);
             }
         }
-    }
+    };
 
     void insertHead(OrtogonalNode* node)
     {
         head->right = node;
         node->left = head;
         head = head->right;
-    }
+    };
 
     void insertTail(OrtogonalNode* node)
     {
         tail->left = node;
         node->right = tail;
         tail = tail->left;
-    }
+    };
 
 
     void insertMiddle(OrtogonalNode* node)
@@ -173,12 +194,12 @@ struct HorizontalList {
         temp->left = node;
         node->right = temp; // merge broken list with new node
         node->left = temp2;
-    }
+    };
 
     bool isEmpty()
     {
         return this->tail == NULL;
-    }
+    };
 
     void print()
     {
@@ -192,5 +213,5 @@ struct HorizontalList {
             }
             cout << endl;
         }
-    }
+    };
 };

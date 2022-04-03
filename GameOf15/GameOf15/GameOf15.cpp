@@ -1,45 +1,128 @@
 // GameOf15.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
-#include <algorithm>
-#include <random>
-#include <vector>
-#include "Matrix.h"
+#include "GameController.h"
 
 using namespace std;
+// prototypes
+void print_main_menu(string);
+void print_new_game_menu(string);
+void print_leaderboard_menu();
+void exec_new_game(string);
+void restore_cin_buffer();
 
-// prototype
-vector<int> create_array(int cols, int rows);
+// global variables;
 
 int main()
 {
-    // get data
-    int lines = 4, columns = 4;
+	// main menu
+	int choice = -1;
+	// ask username
+	char user_nick[20];
+	string msg = "";
+	cout << "Ingresa tu nickname: ";
+	cin.getline(user_nick, 20);
+	// execute actions
+	do {
+		// read actions
+		print_main_menu(msg);
+		cin >> choice;
+		// execute action
+		switch (choice)
+		{
+		case 1:
+			exec_new_game(user_nick);
+			break;
+		case 2:
+			print_leaderboard_menu();
+			break;
+		case 9:
+			return 0;
+		default:
+			msg = "OPERACION INVALIDA";
+			restore_cin_buffer();
+			break;
+		}
+	} while (choice != '9');
 
-    // create array
-    vector<int> to_fill = create_array(lines,columns);
-    // create matrix
-    OrtogonalMatrix* matrix = new OrtogonalMatrix();
-    matrix->fill(lines,columns,to_fill);
-
-    matrix->print();
-    
-    return 0;
+	return EXIT_SUCCESS;
 };
 
-vector<int> create_array(int cols, int rows) {
-    std::vector<int> intArray(cols * rows);
-    // fill array
-    for (int i = 0; i < cols * rows - 1; i++)
-    {
-        intArray[i] = i + 1;
-    }
-    // shuffle array
-    auto rng = std::default_random_engine{};
-    std::shuffle(intArray.begin(), intArray.end(), rng);
-    return intArray;
+void print_main_menu(string footer_msg) {
+	cout << CLEAR_CONSOLE;
+	cout << "---- MENU PRINCIPAL GAME OF 15 (dynamic) ----" << endl;
+	cout << "| 1. Nuevo juego " << endl;
+	cout << "| 2. Tablero de punteos" << endl;
+	cout << "| 9. Salir" << endl;
+	cout << "---------------------------------------------" << endl;
+	if (footer_msg != "") {
+		cout << "MENSAJE: " << footer_msg << endl;
+	}
+	cout << " ... selecciona una opcion: ";
+}
+
+void print_new_game_menu(string footer_msg) {
+	cout << "-------- MENU CREACION DE JUEGO NUEVO --------" << endl;
+	cout << "| 1. Todos los ajustes por defecto " << endl;
+	cout << "| 2. Tablero personalizado y llenado automatico" << endl;
+	cout << "| 3. Tablero personalizado y llenado manual" << endl;
+	cout << "| 4. Tablero personalizado y llenado a partir de archivo" << endl;
+	cout << "| 9. Regresar" << endl;
+	cout << "---------------------------------------------" << endl;
+	if (footer_msg != "") {
+		cout << "MENSAJE: " << footer_msg << endl;
+	}
+	cout << " ... selecciona una opcion: ";
 };
+
+void print_leaderboard_menu() {
+	cout << "------------- MENU PUNTUACIONES --------------" << endl;
+	cout << "| 9. Regresar" << endl;
+	cout << "---------------------------------------------" << endl;
+	cout << " ... selecciona una opcion: ";
+};
+
+void exec_new_game(string nickname) {
+	int action = -1;
+	GameController game_controller = GameController(nickname);
+	string msg = "";
+	// execute actions
+	while (action != 9) {
+		// get info
+		cout << CLEAR_CONSOLE;
+		print_new_game_menu(msg);
+		cin >> action;
+		msg = "";
+		// show data
+		switch (action)
+		{
+		case 1: // default values
+			game_controller.default_game();
+			game_controller.print_boards();
+			break;
+		case 2: // custom size and fill data automatically
+			game_controller.custom_game_autofill();
+			game_controller.print_boards();
+			break;
+		case 3: // custom size and fill manually
+			game_controller.custom_game_manual_fill();
+			// game_controller.print_boards();
+			break;
+		case 4: // load values from file and custom size
+			msg = "OPCION NO PROGRAMADA";
+			break;
+		case 9: // DO NOTHING, RETURN PREVIOUS MENU AND DELETE DATA SAVED
+			return;
+		default:
+			msg = "OPCION INVALIDA";
+			restore_cin_buffer();
+			break;
+		}
+	}
+	// delete object
+	game_controller.~GameController();
+};
+
 
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

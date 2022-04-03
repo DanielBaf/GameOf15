@@ -16,6 +16,11 @@ struct HeaderNode
         this->next = this->previous = NULL;
         this->column = new VerticalList();
     }
+
+    ~HeaderNode() {
+        // delete column
+        column->~VerticalList();
+    }
 };
 
 /// <summary>
@@ -32,6 +37,10 @@ struct AsideNode {
         this->next = this->previous = NULL;
         this->row = new HorizontalList();
     }
+
+    ~AsideNode() {
+        this->row->~HorizontalList();
+    }
 };
 
 /// <summary>
@@ -43,6 +52,15 @@ struct OrtogonalHeaders {
     OrtogonalHeaders()
     {
         this->tail = this->head = NULL;
+    }
+
+    ~OrtogonalHeaders() {
+        HeaderNode* current = this->head;
+        while (current != NULL) {
+            HeaderNode* recover = current->next;
+            current->~HeaderNode();
+            current = recover;
+        }
     }
 
     void insert(HeaderNode* node)
@@ -159,6 +177,15 @@ struct OrtogonalAsides {
     OrtogonalAsides()
     {
         this->tail = this->head = NULL;
+    }
+
+    ~OrtogonalAsides() {
+        AsideNode* current = tail;
+        while (current != NULL) {
+            AsideNode* recover = current->next;
+            current->~AsideNode();
+            current = recover;
+        }
     }
 
     void insert(AsideNode* node)
