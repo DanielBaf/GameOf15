@@ -1,3 +1,5 @@
-﻿  GameOf15.cpp
+﻿  GameController.cpp
 F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\GameOf15\Matrix.h(100,10): warning C4018: '<': signed/unsigned mismatch
+F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\GameOf15\Sorter.h(50,20): warning C4018: '<': signed/unsigned mismatch
+F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\GameOf15\Sorter.h(66,34): warning C4018: '<': signed/unsigned mismatch
   GameOf15.vcxproj -> F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\Debug\GameOf15.exe

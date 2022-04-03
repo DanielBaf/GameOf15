@@ -5,7 +5,10 @@
 using namespace std;
 
 // struct Matrix
-// ----------- ORTOGAONAL -----------
+
+/// <summary>
+/// An ortogonal is a node, as a simple list, this just saves his x, y position, a value, and 4 parents, up, down, left and right
+/// </summary>
 struct OrtogonalNode
 {
     int value, x, y;
@@ -47,9 +50,10 @@ struct VerticalList
         }
     }
 
+
     void insert(OrtogonalNode* node)
     {
-        if (isEmpty())
+        if (isEmpty()) // if empty, is the first thing to insert
         {
             this->head = this->tail = node;
         }

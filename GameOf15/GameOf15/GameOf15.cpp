@@ -92,30 +92,30 @@ void exec_new_game(string nickname) {
 		cout << CLEAR_CONSOLE;
 		print_new_game_menu(msg);
 		cin >> action;
+		restore_cin_buffer();
 		msg = "";
 		// show data
 		switch (action)
 		{
 		case 1: // default values
 			game_controller.default_game();
-			game_controller.print_boards();
+			game_controller.start_game();
 			break;
 		case 2: // custom size and fill data automatically
 			game_controller.custom_game_autofill();
-			game_controller.print_boards();
+			game_controller.start_game();
 			break;
 		case 3: // custom size and fill manually
 			game_controller.custom_game_manual_fill();
-			// game_controller.print_boards();
+			game_controller.start_game();
 			break;
 		case 4: // load values from file and custom size
 			msg = "OPCION NO PROGRAMADA";
 			break;
 		case 9: // DO NOTHING, RETURN PREVIOUS MENU AND DELETE DATA SAVED
-			return;
+			break;
 		default:
 			msg = "OPCION INVALIDA";
-			restore_cin_buffer();
 			break;
 		}
 	}

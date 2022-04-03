@@ -6,30 +6,54 @@ using namespace std;
 
 // prototypes
 vector<int> sort_array_manually(int, int, int);
-void print_array_fragmented(vector<int>, int);
 vector<int> swap_vals_array(vector<int>);
+void print_array_fragmented(vector<int>, int);
 void restore_cin_buffer();
+bool find_on_array(int, vector<int>);
 
 vector<int> sort_array_manually(int index_start, int size, int columns) {
 	// create vector
 	vector<int> to_fill(size);
 	string act = "";
-	for (int i = 0; i < size; i++)
-	{
-		to_fill[i] = i + index_start;
-	}
-	// print array and sort
-	while (act != "y") {
+	// create array 
+	int inserted = 0, input;
+
+	while(inserted < size - 1) {
 		cout << CLEAR_CONSOLE;
+		cout << "Llenando arreglo, arreglo actual: " << endl;
 		print_array_fragmented(to_fill, columns);
-		to_fill = swap_vals_array(to_fill);
-		cout << "¿Deseas terminar de revolver el arreglo? (y/n): ";
-		cin >> act;
-		restore_cin_buffer();
+		cout << "Ingresa un nuevo valor, rango [" << index_start << "-" << index_start + size - 2<<"]: ";
+		// get value, check if already declared and add it
+		cin >> input;
+		if (!find_on_array(input, to_fill) && input >= index_start && input < size + index_start - 1) {
+			to_fill[inserted] = input; // add
+			inserted++;
+		}
+		else {
+			cout << "El valor ya existe o esta fuera del rango esperaddo"<<endl;
+			cout << ".. enter para continuar";
+			_getch();
+		}
 	}
 	// set last on array as 0
 	to_fill[size - 1] = 0;
+
+	cout << "GENRATED ARRAY: " << endl;
+	for (size_t i = 0; i < to_fill.size(); i++)
+	{
+		cout << "arr " << i << ": " << to_fill[i];
+	}
 	return to_fill;
+}
+
+bool find_on_array(int find, vector<int> data) {
+	for (int i = 0; i < data.size(); i++)
+	{
+		if (data[i] == find) {
+			return true;
+		}
+	}
+	return false;
 }
 
 void print_array_fragmented(vector<int> to_fill, int break_at) {
@@ -49,26 +73,6 @@ void print_array_fragmented(vector<int> to_fill, int break_at) {
 		jump_lines++;
 		cout << endl;
 	}
-}
-
-vector<int> swap_vals_array(vector<int> to_swap) {
-	cout << endl;
-	cout << "Ingresa la posicon a mover(n) seguido de la posicion destino(n)" << endl;
-	cout << "EJEMPLO: 1 4 -> mover n=1 a n=4\n...Ingresa las cooredenadas x1 x2: ";
-	int origin, direction, transaction;
-	cin >> origin;
-	cin >> direction;
-	restore_cin_buffer();
-	// check if positions are valid
-	if ((origin < to_swap.size() && origin >=0) && (direction < to_swap.size() && direction >=0)) {
-		transaction = to_swap[direction];
-		to_swap[direction] = to_swap[origin];
-		to_swap[origin] = transaction;
-	}
-	else {
-		cout << "IMPOSIBLE MOVER, EL RANGO DE NUMEROS ES [" << 0 << to_swap.size() - 1 << endl;
-	}
-	return to_swap;
 }
 
 void restore_cin_buffer() {

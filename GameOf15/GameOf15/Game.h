@@ -13,7 +13,6 @@ class Game
 {
 public:
 	Game();
-	Game(string, int, int, int);
 	~Game();
 	void print_board();
 	bool move_cell(int, BoardMovements);
@@ -22,6 +21,8 @@ public:
 	void create_game(int, int, vector<vector<int>>, bool);
 	void set_levels(int);
 	int get_levels();
+	int get_steps();
+	bool is_game_won();
 private:
 	// atributes
 	int levels, current_board;
