@@ -9,13 +9,15 @@ using namespace std;
 class PodiumDataSaver
 {
 public:
-	PodiumDataSaver(int, int, int, char[20], chrono::duration<double>);
+	PodiumDataSaver();
+	PodiumDataSaver(int, int, int, string, chrono::duration<double>);
 	~PodiumDataSaver();
 	int get_steps();
 	int get_points();
 	int get_position();
 	string get_user_nick();
 	chrono::duration<double> get_elapsed_time();
+	void set_position(int );
 private:
 	int steps;
 	std::chrono::duration<double> elapsed_seconds;

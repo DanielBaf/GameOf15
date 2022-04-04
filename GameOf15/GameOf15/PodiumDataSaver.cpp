@@ -1,6 +1,11 @@
 #include "PodiumDataSaver.h"
 
-PodiumDataSaver::PodiumDataSaver(int steps, int position, int points, char nickname[20], chrono::duration<double> elapsed_seconds)
+PodiumDataSaver::PodiumDataSaver() {
+	this->position = -1;
+
+}
+
+PodiumDataSaver::PodiumDataSaver(int steps, int position, int points, string nickname, chrono::duration<double> elapsed_seconds)
 {
 	this->steps = steps;
 	this->position = points;
@@ -31,4 +36,8 @@ string PodiumDataSaver::get_user_nick(){
 
 chrono::duration<double> PodiumDataSaver::get_elapsed_time() {
 	return this->elapsed_seconds;
+}
+
+void PodiumDataSaver::set_position(int position) {
+	this->position = position;
 }

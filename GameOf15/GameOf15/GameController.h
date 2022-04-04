@@ -3,6 +3,7 @@
 #include <ctime>   
 #include <conio.h>
 #include "Game.h"
+#include "Podium.h"
 
 class GameController
 {
@@ -21,10 +22,12 @@ public:
 	void start_game();
 	void restore_cin_buffer_game();
 	void print_help_game();
+	PodiumDataSaver get_player_stats();
 private:
 	// attributes
 	string user_nick;
 	Game current_game;
+	PodiumDataSaver player_stats;
 	// methods
 	void ask_basic_game(int &, int&, int&);
 	void move_cell_input(int, string);

@@ -101,6 +101,7 @@ void GameController::start_game() {
 	auto end_time = std::chrono::system_clock::now();
 	std::chrono::duration<double> elapsed_seconds = end_time - start_time;
 	print_game_result(elapsed_seconds, is_game_won);
+	// create a new GameDataSaver
 };
 
 /// <summary>
@@ -210,8 +211,16 @@ void GameController::print_game_result(std::chrono::duration<double> elapsed_sec
 	cout << "Usuario: " << this->user_nick << endl;
 	cout << "Pasos: " << this->current_game.get_steps() << endl;
 	cout << "Tiempo: " << elapsed_seconds.count() << "s" << endl;
+	cout << "Puntos: " << this->current_game.get_final_points()<<endl;
 	cout << "Juego ganado: " << is_game_won << endl;
 	// TODO calc pints and show
 	cout << "... enter para contiunar";
+
+	// create object to save data
+	this->player_stats = PodiumDataSaver(this->current_game.get_steps(), -1, this->current_game.get_final_points(), this->user_nick, elapsed_seconds);
 	_getch();
+}
+
+PodiumDataSaver GameController::get_player_stats() {
+	return this->player_stats;
 }

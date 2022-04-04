@@ -24,9 +24,10 @@ public:
 	int get_steps();
 	bool is_game_won();
 	int check_is_won();
+	int get_final_points();
 private:
 	// atributes
-	int levels, current_board;
+	int levels, current_board, final_points;
 	long steps;
 	string user_nick;
 	vector<OrtogonalMatrix*> boards;

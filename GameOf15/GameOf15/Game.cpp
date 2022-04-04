@@ -8,6 +8,7 @@ Game::Game() {
 	this->steps = 0;
 	this->levels = 1;
 	this->current_board = 0;
+	this->final_points = 0;
 }
 
 /// <summary>
@@ -131,6 +132,7 @@ bool Game::move_node(OrtogonalNode* origin, OrtogonalNode* destination) {
 bool Game::is_game_won() {
 	// view in all nodes
 	AsideNode* current = this->boards[current_board]->asides->tail;
+	int points_partial = 0;
 	OrtogonalNode* node_check;
 	// check tail by tail if is ordered, from last wich must be "0", and all wich should be sorted from higher to lower
 		while (current != NULL) {
@@ -140,8 +142,14 @@ bool Game::is_game_won() {
 				if (node_check->value > node_check->right->value) {
 					// check if is higher 'case is higher than 0
 					if (node_check->right != this->boards[current_board]->asides->head->row->head) {
+						points_partial += 2;
+						// add result when board ends
+						this->final_points += points_partial;
 						return false;
 					}
+				}
+				else {
+					points_partial += 2;
 				}
 			}
 			node_check = node_check->right;
@@ -214,4 +222,8 @@ int Game::get_levels() {
 
 int Game::get_steps() {
 	return this->steps;
+}
+
+int Game::get_final_points() {
+	return this->final_points;
 }

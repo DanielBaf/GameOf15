@@ -4,6 +4,10 @@
 #include "GameController.h"
 
 using namespace std;
+
+// variable global
+Podium leader_board;
+
 // prototypes
 void print_main_menu(string);
 void print_new_game_menu(string);
@@ -16,6 +20,7 @@ void restore_cin_buffer();
 int main()
 {
 	// main menu
+	leader_board = Podium();
 	int choice = -1;
 	// ask username
 	char user_nick[20];
@@ -36,6 +41,12 @@ int main()
 		case 2:
 			print_leaderboard_menu();
 			break;
+		case 3:
+			cout << CLEAR_CONSOLE;
+			restore_cin_buffer();
+			cout << "Ingrese el nuevo nicK";
+			cin.getline(user_nick, 20);
+			break;
 		case 9:
 			return 0;
 		default:
@@ -53,6 +64,7 @@ void print_main_menu(string footer_msg) {
 	cout << "---- MENU PRINCIPAL GAME OF 15 (dynamic) ----" << endl;
 	cout << "| 1. Nuevo juego " << endl;
 	cout << "| 2. Tablero de punteos" << endl;
+	cout << "| 3. Cambiar de jugador" << endl;
 	cout << "| 9. Salir" << endl;
 	cout << "---------------------------------------------" << endl;
 	if (footer_msg != "") {
@@ -76,10 +88,12 @@ void print_new_game_menu(string footer_msg) {
 };
 
 void print_leaderboard_menu() {
+	cout << CLEAR_CONSOLE;
 	cout << "------------- MENU PUNTUACIONES --------------" << endl;
-	cout << "| 9. Regresar" << endl;
+	leader_board.print_top_players();
 	cout << "---------------------------------------------" << endl;
-	cout << " ... selecciona una opcion: ";
+	cout << " ... enter para regresar: ";
+	_getch();
 };
 
 void exec_new_game(string nickname) {
@@ -100,14 +114,18 @@ void exec_new_game(string nickname) {
 		case 1: // default values
 			game_controller.default_game();
 			game_controller.start_game();
+			// add to list
+			leader_board.add_player_to_podium(game_controller.get_player_stats());
 			break;
 		case 2: // custom size and fill data automatically
 			game_controller.custom_game_autofill();
 			game_controller.start_game();
+			leader_board.add_player_to_podium(game_controller.get_player_stats());
 			break;
 		case 3: // custom size and fill manually
 			game_controller.custom_game_manual_fill();
 			game_controller.start_game();
+			leader_board.add_player_to_podium(game_controller.get_player_stats());
 			break;
 		case 4: // load values from file and custom size
 			msg = "OPCION NO PROGRAMADA";
