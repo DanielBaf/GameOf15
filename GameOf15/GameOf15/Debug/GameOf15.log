@@ -1,4 +1,8 @@
-﻿  GameController.cpp
+﻿  Game.cpp
+F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\GameOf15\Matrix.h(100,10): warning C4018: '<': signed/unsigned mismatch
+F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\GameOf15\Game.cpp(19,20): warning C4018: '<': signed/unsigned mismatch
+F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\GameOf15\Game.cpp(164,27): warning C4018: '>=': signed/unsigned mismatch
+  GameController.cpp
 F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\GameOf15\Matrix.h(100,10): warning C4018: '<': signed/unsigned mismatch
 F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\GameOf15\Sorter.h(44,20): warning C4018: '<': signed/unsigned mismatch
 F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\GameOf15\Sorter.h(60,34): warning C4018: '<': signed/unsigned mismatch
@@ -7,5 +11,6 @@ F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\GameOf15\Matrix.h(100,
   Podium.cpp
 F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\GameOf15\Podium.cpp(50,20): warning C4018: '<': signed/unsigned mismatch
 F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\GameOf15\Podium.cpp(72,14): warning C4018: '<': signed/unsigned mismatch
+  PodiumDataSaver.cpp
   Generating Code...
   GameOf15.vcxproj -> F:\Jefe Mayoneso\Documents\CUNOC\GitHub\GameOf15\GameOf15\Debug\GameOf15.exe
