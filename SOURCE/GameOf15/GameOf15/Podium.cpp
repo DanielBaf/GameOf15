@@ -9,29 +9,30 @@ Podium::~Podium() {
 
 void Podium::print_top_players() {
 	// print headers
-
-	cout << endl << endl << "_______________________________________________________________" << endl << "|";
-	fix_size_print(3, "POS", '|');
+	int counter = 1;
+	cout << endl << endl << "______________________________________________________________________________________" << endl << "|";
+	fix_size_print(5, "POS", '|');
 	fix_size_print(20, " NOMBRE", '|');
-	fix_size_print(14, " MOVIMIENTOS", '|');
-	fix_size_print(10, " PUNTOS", '|');
-	fix_size_print(10, " TIEMPO(s)", '|');
+	fix_size_print(18, " MOVIMIENTOS", '|');
+	fix_size_print(17, " PUNTOS", '|');
+	fix_size_print(20, " TIEMPO(s)", '|');
 	cout << endl;
-	cout << "---------------------------------------------------------------" << endl;
+	cout << "--------------------------------------------------------------------------------------" << endl;
 	for (PodiumDataSaver pod : this->top_players)
 	{ // NO | NAME | MOVEMENTS | POINTS | TIME |
 		// check if is a valid to print
 		if (pod.get_position() != -1) {
 			cout << "|";
-			fix_size_print(3, to_string(pod.get_position()), '|');
+			fix_size_print(5, to_string(counter), '|');
 			fix_size_print(20, pod.get_user_nick(), '|');
-			fix_size_print(14, to_string(pod.get_steps()), '|');
-			fix_size_print(10, to_string(pod.get_points()), '|');
-			fix_size_print(10, to_string(pod.get_elapsed_time().count()) + "s", '|');
+			fix_size_print(18, to_string(pod.get_steps()), '|');
+			fix_size_print(17, to_string(pod.get_points()), '|');
+			fix_size_print(20, format_seconds(pod.get_elapsed_time().count()), '|');
 			cout << endl;
+			counter++;
 		}
 	}
-	cout << "_______________________________________________________________" << endl << endl << endl;
+	cout << "______________________________________________________________________________________" << endl << endl << endl;
 }
 
 void Podium::add_player_to_podium(PodiumDataSaver player) {
@@ -78,4 +79,10 @@ void Podium::update_list(int new_pos, PodiumDataSaver player) {
 		}
 		this->top_players[new_pos] = player;
 	}
+}
+
+string Podium::format_seconds(double seconds) {
+	int minutes = seconds / 60;
+	int hours = minutes / 60;
+	return to_string((int)hours) + "h " + to_string((int)minutes) + "m " + to_string((int)seconds) + "s ";
 }

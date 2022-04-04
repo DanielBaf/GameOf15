@@ -19,5 +19,6 @@ private:
 	void fix_size_print(int,string,char);
 	int find_new_insert_pos(int);
 	void update_list(int, PodiumDataSaver);
+	string format_seconds(double);
 };
 
