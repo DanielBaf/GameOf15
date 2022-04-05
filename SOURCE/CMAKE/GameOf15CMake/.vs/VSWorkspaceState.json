@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\GameOf15CMake",
-    "\\GameOf15CMake\\Utils"
+    "\\GameOf15CMake"
   ],
-  "SelectedNode": "\\GameOf15CMake\\GameOf15CMake.cpp",
   "PreviewInSolutionExplorer": false
 }

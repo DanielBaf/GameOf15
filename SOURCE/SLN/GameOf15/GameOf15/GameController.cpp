@@ -55,7 +55,8 @@ void GameController::start_game() {
 	int action = -1;
 	string option = "";
 	bool is_game_won = false;
-	cout << CLEAR_CONSOLE;
+	cout << CLEAR_CONSOLE; // clear for linux terminals
+	system("CLS"); // clear for windows terminals
 	cout << "Bienvendio, " << this->user_nick << " aqui empieza el juego" << endl << "Escribe 'help' para ver los comandos" << endl << endl;
 
 	while (action != 9) {
@@ -81,7 +82,7 @@ void GameController::start_game() {
 				action = 9;
 				is_game_won = true;
 				cout << "Cerrando el juego...";
-				_getch();
+				system("PAUSE");
 				break;
 			}
 		}
@@ -93,7 +94,8 @@ void GameController::start_game() {
 			action = 9;
 		}
 		else {
-			cout << CLEAR_CONSOLE;
+			cout << CLEAR_CONSOLE; // clear for linux terminals
+			system("CLS"); // clear for windows terminals
 			cout << "OPERACION INVALIDA";
 		}
 	}
@@ -110,7 +112,8 @@ void GameController::start_game() {
 /// <param name="cell"></param>
 /// <param name="action"></param>
 void GameController::move_cell_input(int cell, string action) {
-	cout << CLEAR_CONSOLE;
+	cout << CLEAR_CONSOLE; // clear for linux terminals
+	system("CLS"); // clear for windows terminals
 	if (action._Equal("up")) {
 		this->current_game.move_cell(cell, UP);
 	}
@@ -136,7 +139,8 @@ void GameController::move_cell_input(int cell, string action) {
 /// <param name="levels"></param>
 void GameController::ask_basic_game(int& rows, int& columns, int& levels) {
 	while (rows < 3 || columns < 3 || levels < 1) {
-		cout << CLEAR_CONSOLE;
+		cout << CLEAR_CONSOLE; // clear for linux terminals
+		system("CLS"); // clear for windows terminals
 		cout << endl << "PREPARATIVOS PARA TABLEROS PERSONALIZADOS" << endl;
 		cout << endl << "Por favor ingrese los valores solicitados" << endl;
 		cout << "Ingrese no. niveles (min 1): ";
@@ -175,7 +179,8 @@ void GameController::print_boards() {
 /// CUSTOM MENU for comman "help"
 /// </summary>
 void GameController::print_help_game() {
-	cout << CLEAR_CONSOLE;
+	cout << CLEAR_CONSOLE; // clear for linux terminals
+	system("CLS"); // clear for windows terminals
 	cout << "---------- MENU ACCIONES EN JUEGO ----------" << endl;
 	cout << "| help : despliega lista de comandos" << endl;
 	cout << "| board : imprime el tablero actual" << endl;
@@ -187,9 +192,9 @@ void GameController::print_help_game() {
 	cout << "| restart : reinicia el juego" << endl;
 	cout << "| stop: termina el juego actual" << endl;
 	cout << "-----------------------------------------___" << endl;
-	cout << "...Enter para continuar: ";
-	_getch();
-	cout << CLEAR_CONSOLE;
+	system("PAUSE");
+	cout << CLEAR_CONSOLE; // clear for linux terminals
+	system("CLS"); // clear for windows terminals
 };
 
 void GameController::custom_game_file_fill() {
@@ -210,7 +215,8 @@ void GameController::restore_cin_buffer_game() {
 /// <param name="elapsed_seconds"></param>
 void GameController::print_game_result(std::chrono::duration<double> elapsed_seconds, bool is_game_won) {
 	// calc points
-	cout << CLEAR_CONSOLE;
+	cout << CLEAR_CONSOLE; // clear for linux terminals
+	system("CLS"); // clear for windows terminals
 	cout << "RESULTADOS: " << endl;
 	cout << "Usuario: " << this->user_nick << endl;
 	cout << "Pasos: " << this->current_game.get_steps() << endl;
@@ -218,11 +224,10 @@ void GameController::print_game_result(std::chrono::duration<double> elapsed_sec
 	cout << "Puntos: " << this->current_game.get_final_points()<<endl;
 	cout << "Juego ganado: " << is_game_won << endl;
 	// TODO calc pints and show
-	cout << "... enter para contiunar";
+	system("PAUSE");
 
 	// create object to save data
 	this->player_stats = PodiumDataSaver(this->current_game.get_steps(), -1, this->current_game.get_final_points(), this->user_nick, elapsed_seconds);
-	_getch();
 }
 
 PodiumDataSaver GameController::get_player_stats() {

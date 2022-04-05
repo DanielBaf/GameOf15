@@ -36,4 +36,3 @@ private:
 	bool move_node(OrtogonalNode*, OrtogonalNode*);
 protected:
 };
-

@@ -19,7 +19,8 @@ vector<int> sort_array_manually(int index_start, int size, int columns) {
 	int inserted = 0, input;
 
 	while(inserted < size - 1) {
-		cout << CLEAR_CONSOLE;
+		cout << CLEAR_CONSOLE; // clear for linux terminals
+		system("CLS"); // clear for windows terminals
 		cout << "Llenando arreglo, arreglo actual: " << endl;
 		print_array_fragmented(to_fill, columns);
 		cout << "Ingresa un nuevo valor, rango [" << index_start << "-" << index_start + size - 2<<"]: ";
@@ -31,8 +32,7 @@ vector<int> sort_array_manually(int index_start, int size, int columns) {
 		}
 		else {
 			cout << "El valor ya existe o esta fuera del rango esperaddo"<<endl;
-			cout << ".. enter para continuar";
-			_getch();
+			system("PAUSE");
 		}
 	}
 	// set last on array as 0

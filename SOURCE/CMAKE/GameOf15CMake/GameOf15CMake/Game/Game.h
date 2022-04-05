@@ -3,6 +3,7 @@
 #include <random>
 #include <vector>
 #include "../Matrix/Matrix.h"
+
 constexpr auto CLEAR_CONSOLE = "\x1B[2J\x1B[H";
 
 enum BoardMovements {
@@ -36,4 +37,3 @@ private:
 	bool move_node(OrtogonalNode*, OrtogonalNode*);
 protected:
 };
-

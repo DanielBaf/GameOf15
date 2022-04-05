@@ -35,4 +35,3 @@ private:
 	void print_game_result(std::chrono::duration<double>,bool);
 protected:
 };
-

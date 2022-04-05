@@ -3,9 +3,11 @@
 
 #include "GameOf15CMake.h"
 
-using namespace std; 
+using namespace std;
+
 // variable global
 Podium leader_board;
+
 // prototypes
 void print_main_menu(string);
 void print_new_game_menu(string);
@@ -13,6 +15,7 @@ void print_leaderboard_menu();
 void exec_new_game(string);
 void restore_cin_buffer();
 
+// global variables;
 
 int main()
 {
@@ -39,7 +42,8 @@ int main()
 			print_leaderboard_menu();
 			break;
 		case 3:
-			cout << CLEAR_CONSOLE;
+			cout << CLEAR_CONSOLE; // clear for linux terminals
+			system("CLS"); // clear for windows terminals
 			restore_cin_buffer();
 			cout << "Ingrese el nuevo nicK: ";
 			cin.getline(user_nick, 20);
@@ -57,7 +61,8 @@ int main()
 };
 
 void print_main_menu(string footer_msg) {
-	cout << CLEAR_CONSOLE;
+	cout << CLEAR_CONSOLE; // clear for linux terminals
+	system("CLS"); // clear for windows terminals
 	cout << "---- MENU PRINCIPAL GAME OF 15 (dynamic) ----" << endl;
 	cout << "| 1. Nuevo juego " << endl;
 	cout << "| 2. Tablero de punteos" << endl;
@@ -85,12 +90,12 @@ void print_new_game_menu(string footer_msg) {
 };
 
 void print_leaderboard_menu() {
-	cout << CLEAR_CONSOLE;
+	cout << CLEAR_CONSOLE; // clear for linux terminals
+	system("CLS"); // clear for windows terminals
 	cout << "------------- MENU PUNTUACIONES --------------" << endl;
 	leader_board.print_top_players();
 	cout << "---------------------------------------------" << endl;
-	cout << " ... enter para regresar: ";
-	_getch();
+	system("PAUSE");
 };
 
 void exec_new_game(string nickname) {
@@ -100,7 +105,8 @@ void exec_new_game(string nickname) {
 	// execute actions
 	while (action != 9) {
 		// get info
-		cout << CLEAR_CONSOLE;
+		cout << CLEAR_CONSOLE; // clear for linux terminals
+		system("CLS"); // clear for windows terminals
 		print_new_game_menu(msg);
 		cin >> action;
 		restore_cin_buffer();
@@ -126,6 +132,7 @@ void exec_new_game(string nickname) {
 			break;
 		case 4: // load values from file and custom size
 			msg = "OPCION NO PROGRAMADA";
+			game_controller.custom_game_file_fill();
 			break;
 		case 9: // DO NOTHING, RETURN PREVIOUS MENU AND DELETE DATA SAVED
 			break;
