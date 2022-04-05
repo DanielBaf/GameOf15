@@ -1,0 +1,7 @@
+# ninja log v5
+6	538	6708357083014653	GameOf15CMake/CMakeFiles/GameOf15CMake.dir/Podium/PodiumDataSaver.cpp.obj	29103f629cfd9b6e
+1	581	6708357083454758	GameOf15CMake/CMakeFiles/GameOf15CMake.dir/Podium/Podium.cpp.obj	817384b1486f3fb5
+4	642	6708357084044883	GameOf15CMake/CMakeFiles/GameOf15CMake.dir/Game/Game.cpp.obj	59db9d2633d65170
+8	659	6708357084224928	GameOf15CMake/CMakeFiles/GameOf15CMake.dir/GameOf15CMake.cpp.obj	33e8ed57738115b4
+11	710	6708357084735142	GameOf15CMake/CMakeFiles/GameOf15CMake.dir/Game/GameController.cpp.obj	cebf2df1dbb35215
+710	1336	6708357090293014	GameOf15CMake/GameOf15CMake.exe	9fa13d0ac9fd0ef2

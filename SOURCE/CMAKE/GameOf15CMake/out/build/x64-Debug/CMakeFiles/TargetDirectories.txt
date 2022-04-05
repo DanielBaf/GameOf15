@@ -1,0 +1,5 @@
+F:/Jefe Mayoneso/Documents/CUNOC/GitHub/GameOf15/SOURCE/CMAKE/GameOf15CMake/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+F:/Jefe Mayoneso/Documents/CUNOC/GitHub/GameOf15/SOURCE/CMAKE/GameOf15CMake/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+F:/Jefe Mayoneso/Documents/CUNOC/GitHub/GameOf15/SOURCE/CMAKE/GameOf15CMake/out/build/x64-Debug/GameOf15CMake/CMakeFiles/GameOf15CMake.dir
+F:/Jefe Mayoneso/Documents/CUNOC/GitHub/GameOf15/SOURCE/CMAKE/GameOf15CMake/out/build/x64-Debug/GameOf15CMake/CMakeFiles/edit_cache.dir
+F:/Jefe Mayoneso/Documents/CUNOC/GitHub/GameOf15/SOURCE/CMAKE/GameOf15CMake/out/build/x64-Debug/GameOf15CMake/CMakeFiles/rebuild_cache.dir
