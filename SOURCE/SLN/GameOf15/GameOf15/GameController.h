@@ -17,6 +17,7 @@ public:
 	void default_game();
 	void custom_game_autofill();
 	void custom_game_manual_fill();
+	void custom_game_file_fill();
 	void print_current_board();
 	void print_boards();
 	void start_game();

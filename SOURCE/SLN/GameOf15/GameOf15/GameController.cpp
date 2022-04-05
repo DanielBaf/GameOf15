@@ -192,6 +192,10 @@ void GameController::print_help_game() {
 	cout << CLEAR_CONSOLE;
 };
 
+void GameController::custom_game_file_fill() {
+	// create object data reader
+}
+
 /// <summary>
 /// Restore the cache at std::cin
 /// </summary>

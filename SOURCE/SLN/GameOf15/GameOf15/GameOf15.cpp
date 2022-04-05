@@ -129,6 +129,7 @@ void exec_new_game(string nickname) {
 			break;
 		case 4: // load values from file and custom size
 			msg = "OPCION NO PROGRAMADA";
+			game_controller.custom_game_file_fill();
 			break;
 		case 9: // DO NOTHING, RETURN PREVIOUS MENU AND DELETE DATA SAVED
 			break;
