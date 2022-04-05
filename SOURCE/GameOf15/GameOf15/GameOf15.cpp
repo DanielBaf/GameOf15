@@ -44,7 +44,7 @@ int main()
 		case 3:
 			cout << CLEAR_CONSOLE;
 			restore_cin_buffer();
-			cout << "Ingrese el nuevo nicK";
+			cout << "Ingrese el nuevo nicK: ";
 			cin.getline(user_nick, 20);
 			break;
 		case 9:
