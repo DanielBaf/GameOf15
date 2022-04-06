@@ -60,7 +60,8 @@ void GameController::start_game() {
 	cout << "Bienvendio, " << this->user_nick << " aqui empieza el juego" << endl << "Escribe 'help' para ver los comandos" << endl << endl;
 
 	while (action != 9) {
-		print_current_board();
+		print_boards();
+// 		print_current_board();
 		cout << "Accion: ";
 		cin >> option;
 		if (option._Equal("help")) {
@@ -167,12 +168,14 @@ void GameController::print_current_board() {
 /// Print all boards wich belongs to actual game
 /// </summary>
 void GameController::print_boards() {
-	cout << "PRINT BOARDS";
+	int board_recover = this->current_game.get_current_board();
+	this->current_game.set_current_board(0);
 	for (int i = 0; i < this->current_game.get_levels(); i++)
 	{
 		print_current_board();
 		this->current_game.forward_board();
 	}
+	this->current_game.set_current_board(board_recover);
 };
 
 /// <summary>

@@ -104,10 +104,6 @@ struct OrtogonalMatrix {
 				cout << " ";
 			}
 		}
-		// mover nodo x=0 y=2 -> x=1 y=2
-		// obtener nodo 0,2 a
-		// otener nodo 1,2 b
-		// crear nodo temporal con los datos de 0,2 c
 		cout << close;
 	};
 

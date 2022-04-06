@@ -21,6 +21,8 @@ public:
 	void backward_board();
 	void create_game(int, int, vector<vector<int>>, bool);
 	void set_levels(int);
+	void set_current_board(int);
+	int get_current_board();
 	int get_levels();
 	int get_steps();
 	bool is_game_won();

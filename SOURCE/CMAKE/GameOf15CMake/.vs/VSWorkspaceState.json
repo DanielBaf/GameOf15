@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\GameOf15CMake"
+    "\\GameOf15CMake",
+    "\\GameOf15CMake\\Game"
   ],
   "PreviewInSolutionExplorer": false
 }

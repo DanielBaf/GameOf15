@@ -224,6 +224,19 @@ int Game::get_steps() {
 	return this->steps;
 }
 
+int Game::get_current_board() {
+	return this->current_board;
+}
+
+void Game::set_current_board(int board) {
+	if (board < this->levels && board >= 0) {
+		this->current_board = board;
+	}
+	else {
+		this->current_board = 0;
+	}
+}
+
 int Game::get_final_points() {
 	return this->final_points;
 }
