@@ -145,6 +145,7 @@ bool Game::is_game_won() {
 						points_partial += 2;
 						// add result when board ends
 						this->final_points += points_partial;
+						this->games_won++; // increase games won
 						return false;
 					}
 				}
@@ -161,9 +162,9 @@ bool Game::is_game_won() {
 
 int Game::check_is_won() {
 	if (this->is_game_won()) {
-		if (this->current_board >= this->boards.size() - 1) {
+		if (this->current_board >= this->boards.size() - 1 && this->games_won > this->boards.size() - 1) {
 			forward_board();
-			cout << "Has ganado todos los niveles del juego " << endl;
+			cout << "Has ganado todos los niveles del juego " << endl<<endl;
 			return -1;
 		}
 		else {

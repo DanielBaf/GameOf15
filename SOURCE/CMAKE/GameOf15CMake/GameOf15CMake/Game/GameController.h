@@ -33,5 +33,6 @@ private:
 	void ask_basic_game(int&, int&, int&);
 	void move_cell_input(int, string);
 	void print_game_result(std::chrono::duration<double>, bool);
+	void move_board(string);
 protected:
 };

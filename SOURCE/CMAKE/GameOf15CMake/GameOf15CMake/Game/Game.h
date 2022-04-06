@@ -30,7 +30,7 @@ public:
 	int get_final_points();
 private:
 	// atributes
-	int levels, current_board, final_points;
+	int levels, current_board, final_points, games_won;
 	long steps;
 	string user_nick;
 	vector<OrtogonalMatrix*> boards;

@@ -60,8 +60,8 @@ void GameController::start_game() {
 	cout << "Bienvendio, " << this->user_nick << " aqui empieza el juego" << endl << "Escribe 'help' para ver los comandos" << endl << endl;
 
 	while (action != 9) {
-		print_boards();
-// 		print_current_board();
+		print_current_board();
+		// 		print_current_board();
 		cout << "Accion: ";
 		cin >> option;
 		if (option._Equal("help")) {
@@ -70,7 +70,7 @@ void GameController::start_game() {
 		else if (option._Equal("board")) {
 			string action;
 			cin >> action;
-			cout << "ACTION: " << action;
+			move_board(action);
 		}
 		else if (option._Equal("mv")) { // mv = move
 			int cell;
@@ -186,9 +186,8 @@ void GameController::print_help_game() {
 	system("CLS"); // clear for windows terminals
 	cout << "---------- MENU ACCIONES EN JUEGO ----------" << endl;
 	cout << "| help : despliega lista de comandos" << endl;
-	cout << "| board : imprime el tablero actual" << endl;
-	cout << "| board $action: imprime el siguiente tablero en caso exista" << endl;
-	cout << "| \t$action = PREV, NEXT, ALL: imprime el tablero anterior o siguiente o todos" << endl;
+	cout << "| board $action: acciones con el tabler" << endl;
+	cout << "| \t$action = PREV, NEXT, ALL: cambia al tablero previo o siguiente, ALL imprime todos los tableros" << endl;
 	cout << "| mv $id $action" << endl;
 	cout << "| \t$id=el valor de la celda" << endl;
 	cout << "| \t$action = up, down, left, right " << endl;
@@ -235,4 +234,24 @@ void GameController::print_game_result(std::chrono::duration<double> elapsed_sec
 
 PodiumDataSaver GameController::get_player_stats() {
 	return this->player_stats;
+}
+
+void GameController::move_board(string action) {
+	system("CLS");
+	cout << CLEAR_CONSOLE;
+	if (action._Equal("PREV")) {
+		this->current_game.backward_board();
+		cout << "Has cambiado al tablero: " << this->current_game.get_current_board() << endl;
+	}
+	else if (action._Equal("NEXT")) {
+		this->current_game.forward_board();
+		cout << "Has cambiado al tablero: " << this->current_game.get_current_board() << endl;
+	}
+	else if (action._Equal("ALL")) {
+		print_boards();
+	}
+	else {
+		cout << "OPCION INVALIDA" << endl;
+	}
+	system("PAUSE");
 }
