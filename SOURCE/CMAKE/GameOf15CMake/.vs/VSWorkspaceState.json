@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\GameOf15CMake",
-    "\\GameOf15CMake\\Game",
-    "\\GameOf15CMake\\Podium"
+    "\\GameOf15CMake"
   ],
-  "SelectedNode": "\\GameOf15CMake\\Game\\GameController.cpp",
+  "SelectedNode": "\\GameOf15CMake\\GameOf15CMake.cpp",
   "PreviewInSolutionExplorer": false
 }
